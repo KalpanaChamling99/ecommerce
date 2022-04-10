@@ -1,0 +1,19 @@
+@import '../layouts/checkout-form';
+.nant-register-section{
+    padding: 60px 0;
+    .nant-wrapper{
+        background-color: #fff;
+        box-shadow: 0 0 2px 2px rgba(243,243,243,0.63);
+        padding:  30px 30px 45px;
+    }
+    p,
+    .section-title{
+        margin-top: 15px;
+        text-align: center;
+        font-weight: 500;
+    }
+    .input-field-section-title{
+       margin-top: 30px;
+       padding-bottom: 10px;
+    }
+}

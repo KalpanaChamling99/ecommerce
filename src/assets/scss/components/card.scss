@@ -1,0 +1,35 @@
+.proceed-to-checkout{
+    width: 250px;
+    border: 1px solid #e1e1e1;
+    padding: 15px 30px 30px;
+    .pris-form-element{
+        padding-top: 10px;
+    }
+    textarea,
+    input,
+    label{
+        margin-top: 5px;
+    }
+    label{
+        display: block;
+        width: 100%;
+        font-weight: 600;
+    }
+    textarea,
+    input{
+        display: inline-block;
+        width: 100%;
+        padding: 10px;
+    }
+    a{
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
+        background-color: $secondary;
+        color: #fff;
+        padding: 0 30px;
+    }
+    .pris-btn-section{
+        padding-top: 15px;
+    }
+}

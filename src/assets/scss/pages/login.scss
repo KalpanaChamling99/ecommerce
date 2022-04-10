@@ -1,0 +1,54 @@
+
+ @import '../common';
+.login-section{
+
+    label{
+        display: block;
+        font-weight: 600;
+    }
+    input{
+        display: block;
+        width: 100%;
+        border: 1px solid #eceff8;
+        padding: 10px 15px;
+        font-family: inherit;
+    }
+    label,
+    input,
+    button{
+        margin-top: 10px;
+    }
+
+    button{
+        display: block;
+        width: 100%;
+        padding: 0 20px;
+        line-height: 40px;
+        height: 40px;
+        border: 0;
+        background-color: $secondary;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        &:disabled{
+            cursor: not-allowed;
+            &:hover{
+                opacity: 0.4;
+            }
+        }
+    }
+    .btn-section{
+        padding-top: 10px;
+    }
+
+    .section-title{
+        margin-bottom: 15px;
+    }
+    .login-wrapper{
+        width: 500px;
+        max-width: 100%;
+        margin: auto;
+        padding: 45px;
+        box-shadow: 0 0 4px 4px rgba(233,233,233,0.63);
+    }   
+}
