@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 
 const ContactUsPage = (props) => {
   return (
-    <section className="contact-page-wrap section-padding">
+    <section className="contact-page-wrap nant-main-section-padding">
       <div className="container">
         <div className="row">
           <div className="col-lg-4 col-md-6 col-12">

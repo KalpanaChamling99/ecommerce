@@ -4,7 +4,6 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from './../components/checkout/CheckoutForm';
 import config from '../config';
-import '../assets/scss/pages/checkoutPage.scss';
 
 const { STRIPE: { PUBLIC_KEY } } = config;
 

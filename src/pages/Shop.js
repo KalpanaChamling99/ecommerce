@@ -13,7 +13,7 @@ const Shop = () => {
         dispatch(getPublicProducts());
     }, [dispatch]);
     return(
-        <section className="blog-card-section section-padding">
+        <section className="blog-card-section nant-main-section-padding">
             <div className="container">
                 <h2 className="section-title">All Products</h2> 
                 <div className="row">

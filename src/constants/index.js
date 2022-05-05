@@ -23,9 +23,12 @@ export const protectedRoutesValue = {
 export const ApiEndpoints = {
   SITE_SETTINGS   : 'site-settings',
   SERVICES        : 'pages',
-  SUPPORTERS      : 'supporters',
+  SUPPORTERS      : 'sponsors',
+  PROJECTS        : 'projects',
   SLIDERS         : 'sliders',
   EVENTS          : 'events',
+  DOCUMENTS       : 'documents',
+  EVENTS_CATEGORY  : 'event-category',
   PUBLIC_PRODUCTS : 'public-products',
   LOGIN           : 'login',
   TEAMS           : 'teams',
@@ -38,4 +41,5 @@ export const ApiEndpoints = {
   UPDATE_PASSWORD : 'change-password',
   FORGOT_PASSWORD : 'forgot-password',
   PRIVATE_PRODUCTS   : 'private-product-list',
+  PAST_COMMITTEE_CATEGORY  : 'past-committee-category',
 };

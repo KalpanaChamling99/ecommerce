@@ -1,30 +1,31 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Table, Select } from "antd";
+import React, { useState, useEffect } from "react";
+import { Select, Pagination } from "antd";
 import "antd/dist/antd.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getPastCommittee } from "../actions/thunk/pastCommitteeThunk";
-import getColumnSearchProps from "../components/table/getCoulmnSearchProps";
+import {
+  getPastCommittee,
+  getPastCommitteeCategory,
+} from "../actions/thunk/pastCommitteeThunk";
+import Loader from "../components/common/Loader";
 
 const { Option } = Select;
 
 const PastCommittee = (props) => {
-  const [searchText, setSearchText] = useState("");
-  const [searchedColumn, setSearchedColumn] = useState(0);
-  const [filteredPastCommittee, setFilteredDataSource] = useState([]);
-  const [committeeCategory, setCommitteeCategory] = useState([]);
-  const refSearchInput = useRef(null);
+  const [filteredPastCommittee, setFilteredPastCommittee] = useState([]);
+  const [open, setOpen] = useState("");
+  const [current, setCurrent] = useState(1);
+  const [totalPastCommittee, setTotalPastCommittee] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState("Team 2018/20");
 
   const {
-    pastCommittee: { pastCommittee, isLoading },
+    pastCommittee: {
+      pastCommittee: { data: pastCommitteeData = [], total },
+      pastCommitteeCategory = [],
+      isLoading,
+    },
   } = useSelector((state) => state);
 
   const dispatch = useDispatch();
-
-  const getCommitteeCategory = (pastCommittee) => {
-    return pastCommittee
-      .map((ds) => ds.committee_category)
-      .filter((value, index, self) => self.indexOf(value) === index)
-  };
 
   // Fetch data
   useEffect(() => {
@@ -32,72 +33,97 @@ const PastCommittee = (props) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (pastCommittee.length > 0) {
-      const committeeCategory = getCommitteeCategory(pastCommittee);
-      setCommitteeCategory(committeeCategory);
-      setFilteredDataSource(pastCommittee.filter(data => data.committee_category === "Team 2018/20"));
-    }
-  }, [pastCommittee]);
+    dispatch(getPastCommitteeCategory());
+  }, [dispatch]);
+
+  useEffect(() => {
+    setFilteredPastCommittee(pastCommitteeData);
+    setTotalPastCommittee(total);
+  }, [pastCommitteeData, total]);
 
   function onChange(value) {
-    setFilteredDataSource(pastCommittee.filter(data => data.committee_category === value));
+    setSelectedCategory(value);
+    setCurrent(1);
+    setOpen(false);
+
+    dispatch(getPastCommittee(`category=${value}`));
+    totalPastCommittee(total);
   }
 
-  const columns = [
-    {
-      title: "Executive Name",
-      dataIndex: "post_designation",
-      key: "post_designation",
-      ...getColumnSearchProps(
-        "post_designation",
-        refSearchInput,
-        searchText,
-        setSearchText,
-        searchedColumn,
-        setSearchedColumn
-      ),
-    },
-    {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
-    },
-    {
-      title: "Team",
-      dataIndex: "committee_category",
-      key: "committee_category",
-      hidden: true,
-    },
-  ].filter((item) => !item.hidden);
+  const paginationHandler = (page) => {
+    dispatch(getPastCommittee(`page=${page}`));
+    setCurrent(page);
+  };
 
   return (
-    <div className="test">
-      <h2>Past Committee </h2>
+    <div className="section-padding">
+      <section className="team-section section-padding">
+        <div className="container">
+          <h2>Past Committee </h2>
 
-      <Select
-        showSearch
-        defaultValue="Team 2018/20"
-        style={{ width: 200 }}
-        onChange={onChange}
-        placeholder="Search to Select"
-        optionFilterProp="children"
-        filterOption={(input, option) =>
-          option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-        }
-        filterSort={(optionA, optionB) =>
-          optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
-        }
-      >
-        {committeeCategory?.map((category, index) => {
-          return <Option value={category} key={index}>{category}</Option>
-        })};
-      </Select>
+          <Select
+            showSearch
+            defaultValue="Team 2018/20"
+            value={selectedCategory}
+            style={{ width: 200 }}
+            open={open}
+            onChange={onChange}
+            placeholder="Search to Select"
+            optionFilterProp="children"
+            filterOption={(input, option) =>
+              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+            }
+            filterSort={(optionA, optionB) =>
+              optionA.children
+                .toLowerCase()
+                .localeCompare(optionB.children.toLowerCase())
+            }
+            onFocus={() => setOpen(true)}
+            onBlur={() => setOpen(false)}
+            onSearch={() => setOpen(true)}
+          >
+            {pastCommitteeCategory?.map((category, index) => {
+              return (
+                <Option value={category?.id} key={index}>
+                  {category?.name}
+                </Option>
+              );
+            })}
+            ;
+          </Select>
+          <div className="row">
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <>
+                {filteredPastCommittee?.map((data) => (
+                  <div className="col-lg-3 col-md-6 col-12">
+                    <div className="single-team-member text-center">
+                      <div className="member-img">
+                        <img src={data?.image} alt="" />
+                        <div className="small-element" />
+                      </div>
+                      <div className="">
+                        <h2>{data?.name}</h2>
+                        <span>{data?.post_designation}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </>
+            )}
+          </div>
 
-      <Table
-        loading={isLoading}
-        columns={columns}
-        dataSource={filteredPastCommittee}
-      />
+          <div className="text-center pt-30">
+            <Pagination
+              pageSize={10}
+              current={current}
+              total={totalPastCommittee}
+              onChange={paginationHandler}
+            />
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

@@ -16,3 +16,15 @@ export const checkIfTokenHasExpired = () => {
   }
   return hasExpired;
 };
+
+export const getTrimmedString = (data, maxLength = 250) => {
+  let trimmedString = data?.substr(0, maxLength);
+
+  trimmedString =
+    trimmedString?.substr(
+      0,
+      Math.min(trimmedString.length, trimmedString.lastIndexOf(" "))
+    ) + "...";
+
+  return trimmedString;
+};

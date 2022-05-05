@@ -58,7 +58,11 @@ const CheckoutForm = (props) => {
     useEffect(() => {
         if(productInfo) {
             dispatch(clearOrderProduct());
-            history.push('/order-history');
+            if(isLoggedIn()){
+                history.push('/order-history');
+            }else{
+                history.push('/');
+            }
         }
     }, [productInfo, history, dispatch]);
 

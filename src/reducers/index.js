@@ -11,6 +11,8 @@ import { orderHistoryReducer} from './orderHistoryReducer';
 import { registerReducer } from './registerReducer';
 import { passwordReducer } from './user/passwordReducer';
 import { privateProductsReducer } from './user/privateProductReducer';
+import { eventCategoryReducer} from './eventsCategoryReducer';
+import {documentReducer} from './documentReducer';
 
 export default combineReducers({
   homePage: homePageReducer,
@@ -24,5 +26,7 @@ export default combineReducers({
   orderHistory: orderHistoryReducer,
   registration: registerReducer,
   password: passwordReducer,
-  myProduct: privateProductsReducer
+  myProduct: privateProductsReducer,
+  eventCategory: eventCategoryReducer,
+  documentsList : documentReducer
 });

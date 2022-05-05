@@ -6,7 +6,6 @@ import Loader from '../../components/common/Loader';
 import Product from '../../components/products/Product';
 import {getPrivateProducts} from '../../actions/thunk/privateProductThunk';
 
-import '../../assets/scss/pages/myProductPage.scss';
 
 const pageSize = 6;
 const { Search } = Input;
@@ -59,7 +58,7 @@ const PrivateProducts = () => {
     return(
         <>
             
-            <div className="nant-product-section nant-pos-relative">
+            <div className="nant-product-section nant-pos-relative nant-main-section-padding">
                 {isLoading ? <Loader /> :
                     <div className="container">
                         <div className="nant-search-field">

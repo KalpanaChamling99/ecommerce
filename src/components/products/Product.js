@@ -79,7 +79,7 @@ const Product = (props) => {
             <div className="blog-details">
                 
                 {publishedDate && <span className="meta-tag"><span className="icon"><FaCalendarAlt /></span>{publishedDate}</span>}
-                <h3> <a href="news-details.html">{props.item_name}</a></h3>
+                <h3> <a to="news-details.html">{props.item_name}</a></h3>
                 <p> {props.description } </p>
                 <p>${props.price}</p>
 

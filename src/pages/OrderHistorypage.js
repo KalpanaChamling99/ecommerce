@@ -83,7 +83,7 @@ const OrderHistory = () => {
     });
 
   return (
-    <div className="nant-order-history-list">
+    <div className="nant-order-history-list nant-main-section-padding">
       <div className="container">
         <DataTable />
         <Modal

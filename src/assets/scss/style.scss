@@ -1,9 +1,11 @@
-@import '~bootstrap/dist/css/bootstrap.css';
+@import '~bootstrap/dist/css/bootstrap.min.css';
 @import 'helpers/master';
 @import 'base/master';
 @import 'components/master';
 @import 'layouts/master';
+@import 'pages/master';
 
+@import 'theme/master';
 
 * {
 	box-sizing: border-box;
@@ -134,7 +136,6 @@ input, textarea, button {
     // border: 0px;
 }
 .nant-single-page{
-    padding: 45px 0 75px;
     p,
     .nant-section-title{
         margin-top: 10px;
@@ -146,7 +147,6 @@ input, textarea, button {
    
 }
 .nant-memberlist-section{
-    padding: 30px 0 60px;
     table,
     .no-result,
     .nant-memberlist-search-field{

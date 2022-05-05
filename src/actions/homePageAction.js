@@ -18,6 +18,12 @@ export function getSupporters(payload) {
         payload
     }
 }
+export function getProjects(payload) {
+    return {
+        type: ACTIONS_TYPES.GET_PROJECTS,
+        payload
+    }
+}
 export function getSliders(payload) {
     return {
         type: ACTIONS_TYPES.GET_SLIDERS,

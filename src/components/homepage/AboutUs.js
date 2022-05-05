@@ -1,42 +1,65 @@
-import {Link} from 'react-router-dom';
-import {FaHeart,FaCheck} from 'react-icons/fa';
-
-import DummyImage1 from '../../assets/images/about1.jpg';
-import DummyImage2 from '../../assets/images/about2.jpg';
-
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { FaHeart } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { getServices } from "../../actions/thunk/homePageThunk";
+import AboutPost from "./components/Aboutus";
+import DummyImage1 from "../../assets/images/about1.jpg";
+import DummyImage2 from "../../assets/images/about2.jpg";
+import Loader from "../common/Loader";
 
 const AboutUs = () => {
-    return(
-        <section className="about-us-section about-us-two section-padding">
-            {/* <div className="container">
-                <div className="row">
-                    <div className="col-lg-6">
-                        <div className="about-shots d-flex justify-content-between-- align-center">
-                            <div className="about-img mr-3"> 
-                                <img src={DummyImage1} alt="" className="img-fluid" />
-                            </div>
-                            <div className="about-img"> 
-                                <img src={DummyImage2} alt="" className="img-fluid" />
-                            </div>
+  const {
+    homePage: { services },
+    loader: { isLoading },
+  } = useSelector((state) => state);
+  const [aboutDetails, setAboutDetails] = useState([]);
+  const [serviceDetails, setServiceDetails] = useState([]);
+  const [historyDetails, setHistoryDetails] = useState({});
+  const dispatch = useDispatch();
+  
+  // Fetch service post initially
+  useEffect(() => {
+    dispatch(getServices());
+  }, [dispatch]);
+
+  useEffect(() => {
+    let about = services?.filter((post) =>
+      `${post?.page_name}`.toLowerCase().includes("about")
+    );
+    let history = services?.find((post) =>
+      `${post?.page_name}`.toLowerCase().includes("history")
+    );
+    let service = services?.filter(
+      (post) => !`${post?.page_name}`.toLowerCase().includes("about")
+    );
+    setAboutDetails(about);
+    setServiceDetails(service);
+    setHistoryDetails(history);
+  }, [services]);
+
+  return (
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+            <section className="promo-section promo-flex-wrap">
+                <div className="container wow fadeInUp">
+                    <div className="row">
+                        {serviceDetails?.map((item) => (
+                        <div className="col-lg-6 pr-lg-0 col-12" key={item.id}>
+                            <AboutPost
+                            data ={item}
+                            />
                         </div>
-                    </div>
-                    <div className="col-lg-6 about_left_content mt-0 pl-lg-5 pr-lg-5">
-                        <div className="section-title">
-                            <span><span className="icon"><FaHeart /></span>About Us</span>
-                            <h1>We’ve Funded <span>44k</span> Dollars Over</h1>
-                        </div>
-                        <p> Your $40.00 monthly donation can give 12 people clean water every year. 100% funds water
-                            projects. Pick your hand to help for them. </p>
-                        <ul className="checked-list mt-30">
-                            <li>A place in history</li>
-                            <li>It’s about impact, goodness</li>
-                        </ul>
-                        <Link to="#" className="theme-btn minimal-btn mt-35">Learn More</Link>
+                        ))}
                     </div>
                 </div>
-            </div> */}
-        </section>
-    );
+            </section>
+          
+      )}
+    </>
+  );
 };
 
 export default AboutUs;

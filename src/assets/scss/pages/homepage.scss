@@ -1,2 +1,101 @@
-@import '../common';
-@import '../layouts/homepage/master';
+
+.nant-slider{
+  &:hover{
+    .slider-arrow{
+      opacity: 1;
+    }
+  }
+  h1{
+    position: relative;
+  }
+  .slider-arrow{
+    position: absolute;
+    top: 50%;
+    @include transform(translateY(-50%));
+    z-index: 3;
+    display: inline-block;
+    border:  1px solid rgb(242, 242, 242);
+    background-color: transparent;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: rgb(242, 242, 242);
+    @include transition();
+    @include media(sm){
+      width: 74px;
+      height: 74px;
+      line-height: 74px;
+
+    }
+    @include media(lg){
+      opacity: 0;
+    }
+    &:hover{
+      background-color: $primary;
+      color: #fff;
+      border-color: $primary;
+    }
+  }
+  .slider-prev{
+    left: 30px;
+    @include media(sm){
+      left: 60px;
+    }
+  }
+  .slider-next{
+    right: 30px;
+    @include media(sm){
+      right: 60px;
+    }
+  }
+}
+.popular-cause-section{
+ .single-cause-item{
+     margin-right: 30px;
+ }
+}
+
+.cause-carousel-nav {
+.owl-prev, .owl-next {
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(242, 242, 242);
+    border-radius: 50%;
+    width: 74px;
+    height: 74px;
+    line-height: 74px;
+    text-align: center;
+    color: $theme-color;
+    box-sizing: border-box;
+    display: inline-block;
+    margin-left: 15px;
+    transition: all .3s ease-in-out;
+
+    @media (max-width: 767px) {            
+        width: 54px;
+        height: 54px;
+        line-height: 54px;
+    }
+
+    @media (max-width: 500px) {            
+        width: 44px;
+        height: 44px;
+        line-height: 44px;
+        font-size: 14px;
+        margin-top: 10px;            
+    }
+
+    &:hover {
+        background-color: #f86048;
+        border-color: #f86048;
+        color: #fff;
+        cursor: pointer;
+    }
+}
+  
+}
+div.cause-carousel-nav .slick-list .slick-slide {
+pointer-events: auto;
+}

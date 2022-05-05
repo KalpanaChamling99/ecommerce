@@ -5,7 +5,6 @@ import { Form, DatePicker, Button, Input } from "antd";
 
 import { checkout } from "../../actions/checkoutAction";
 import CartItem from "../../components/cart/CartItem";
-import "../../assets/scss/pages/cart.scss";
 import { getFormattedOrderedProducts } from "../../utils/productHelper";
 import { orderProduct } from "../../actions/thunk/orderPostThunk";
 import { clearOrderProduct } from "../../actions/orderProductAction";
@@ -55,9 +54,7 @@ const CartPage = (props) => {
       from_date = start.format("YYYY-MM-DD");
        to_date = end.format("YYYY-MM-DD");
     }
-    // const from_date = start.format("YYYY-MM-DD");
-    // const to_date = end.format("YYYY-MM-DD");
-
+   
     if (!totalAmount) {
       const payload = {
         amount: null,
@@ -81,7 +78,7 @@ const CartPage = (props) => {
   };
 
   return (
-    <div className="nant-cart-items-list">
+    <div className="nant-cart-items-list nant-main-section-padding">
       <div className="container">
         <div className="row">
           <div className="col col-md-8">

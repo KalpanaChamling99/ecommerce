@@ -1,103 +1,56 @@
-import React, { useEffect,useState } from "react";
-import { Link, withRouter, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { logout } from "./../../../actions/loginAuthAction";
-import { checkIfTokenHasExpired } from "./../../../utils";
+import React from "react";
+import { Link, withRouter} from "react-router-dom";
+
 import Logo from "../Logo";
-import NavMenu from "./NavMenu";
-import CartButton from "./CartButton";
+import NavMenu from './NavMenu';
+import Social from './../Social';
+import Topbar from './Topbar';
 import MobileMenu from './MobileMenu';
-import { isLoggedIn } from "../../../utils";
 
-const Header = (props) => {
-  const history = useHistory();
-  const dispatch = useDispatch();
+const Header = () =>{
+    
+    return(
+        <header className="header-wrap header-box-style header-1 nant-header">
+            <div className="container">
+                <div className="row align-items-center nant-header-wrapper">
+                    <div className="col-12 p-0 d-lg-none d-block d-none-mobile">
+                       <Topbar />
+                    </div> 
 
- 
-  const {
-    login: { user },
-  } = useSelector((state) => state);
-  const userInfo = localStorage.getItem("user")
-    ? JSON.parse(localStorage.getItem("user"))
-    : {};
+                    {/* LOGO */}
+                    <div className="col-12 col-sm-6 col-lg-3  pr-0 pl-0 nant-logo-section">
+                        <div className="logo">
+                            <Link to="/">
+                                <Logo />
+                            </Link>
+                        </div>
+                    </div>
+                   
+                    {/* topbar */}
+                    <div className="col-xl-9 pl-lg-0 col-lg-9 d-none d-lg-block pr-0">
+                        <div className="box-wrap">
+                            <Topbar />
+                            <div className="menu-wrap d-flex align-items-center justify-content-around">
+                                <NavMenu />
+                                <Social />
+                            </div>                        
+                        </div>                    
+                    </div> 
+                    
+                    {/* mobile:Topbar */}
+                    <div className="col-10  p-0 d-sm-none d-block mobile-topbar">
+                       <Topbar />
+                    </div> 
 
-  const logoutHandler = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    dispatch(logout());
-    history.push("/");
-  };
- 
-  useEffect(() => {
-    if (checkIfTokenHasExpired()) {
-      logoutHandler();
-    }
-  }, []);
-
-  return (
-    <header className="transparent-header header-2 nant-header">
-      <div className="container">
-        <div className="row align-items-center">
-          <div className="col-lg-3 col-sm-5 col-12">
-            <div className="logo">
-              <Link to="/">
-                <Logo />
-              </Link>
-            </div>
-          </div>
-          <div className="col-lg-6 p-lg-0 d-none d-lg-block">
-            <div className="menu-wrap">
-              <NavMenu />
-            </div>
-          </div>
-
-          <div className="col-lg-3 col-sm-5 pl-lg-0 col-10 text-right">
-            <div className="nant-header-btn-section">
-              <CartButton />
-              {!isLoggedIn() ? (
-                <div className="header-promo-btn">
-                  <Link to="/login" className="theme-btn">
-                    Login
-                  </Link>
+                    <div className="col-2 col-sm-6 col-lg-6 d-lg-none d-block pl-0">
+                        <div className="mobile-menu-section">
+                            <MobileMenu />
+                        </div>
+                    </div>
                 </div>
-              ) : (
-                <ul className="nant-profile-menu">
-                  <li>
-                    {" "}
-                    {userInfo?.title} {userInfo?.first_name}
-                    <ul className="nant-sub-menu">
-                      <li>
-                        <Link to="/order-history">My order</Link>
-                      </li>
-                      <li>
-                        <Link to="/update-password">Change Password</Link>
-                      </li>
-
-                      <li>
-                        <Link to="/my-product">My Product</Link>
-                      </li>
-
-                      <li>
-                        <Link to="/" onClick={logoutHandler}>
-                          Logout
-                        </Link>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              )}
             </div>
-          </div>
+        </header>    
 
-          <div className="d-block d-lg-none col-sm-1 col-2">
-            <div className="mobile-menu-section">
-              <MobileMenu />
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-  );
+    );
 };
-
 export default withRouter(Header);

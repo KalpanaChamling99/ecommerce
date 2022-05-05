@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { withRouter,useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {getEvents} from '../actions/thunk/homePageThunk';
+import {getEvents} from '../../actions/thunk/homePageThunk';
 
-import EventCard from '../components/card/Event';
+import EventCard from '../../components/card/Event';
 
 const EventDetailPage = (props) => {
     const { homePage: { events} } = useSelector((state) => state);
@@ -19,9 +19,9 @@ const EventDetailPage = (props) => {
     }, [dispatch]);
 
     return(
-        <section className="event-details-wrap section-padding">
+        <section className="event-details-wrap nant-main-section-padding">
             <div className="container">
-            {events?.filter( post =>post?.id == postId)?.map( (data) =>(
+            {events?.data?.filter( post =>post?.id == postId)?.map( (data) =>(
                 <div className="row">
                     <div className="col-12 col-lg-12">
                         <div className="event-fetaured-thumb">

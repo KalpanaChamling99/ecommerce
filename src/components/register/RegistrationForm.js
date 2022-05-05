@@ -101,7 +101,7 @@ const RegistrationForm = (props) => {
     return(
         <>
         {isRegistrationFormVisible  && 
-            <div className="nant-register-section">
+            <div className="nant-register-section nant-main-section-padding">
                 <div className="container">
                     <div className="nant-wrapper">
                         <h3 className="section-title">Please Fill in your details securely below</h3>
@@ -114,7 +114,7 @@ const RegistrationForm = (props) => {
                                     <h3 className="input-field-section-title">Personal Details</h3>
                                     <div className="row">
                                     
-                                        <div className="col col-md-3">
+                                        <div className="col col-12 col-sm-6 col-md-3">
                                             <Form.Item 
                                                 name="title" 
                                                 label="Title" 
@@ -130,7 +130,7 @@ const RegistrationForm = (props) => {
                                             </Form.Item>
                                         </div>
 
-                                        <div className="col col-md-3">
+                                        <div className="col col-12 col-sm-6 col-md-3">
                                             <Form.Item
                                                 label="First name"
                                                 name="first_name"
@@ -145,7 +145,7 @@ const RegistrationForm = (props) => {
                                             </Form.Item>
                                         </div>
 
-                                        <div className="col col-md-3">
+                                        <div className="col col-12 col-sm-6 col-md-3">
                                             <Form.Item
                                                 label="Middle name"
                                                 name="middle_name"
@@ -154,7 +154,7 @@ const RegistrationForm = (props) => {
                                             </Form.Item>
                                         </div>
 
-                                        <div className="col col-md-3">
+                                        <div className="col col-12 col-sm-6 col-md-3">
                                             <Form.Item
                                                 label="Last name"
                                                 name="last_name"
@@ -170,7 +170,7 @@ const RegistrationForm = (props) => {
                                         </div>
                                         
 
-                                        <div className="col col-md-4">
+                                        <div className="col col-12 col-sm-6 col-md-4">
                                             <Form.Item
                                                 label="Email"
                                                 name="email"
@@ -188,7 +188,7 @@ const RegistrationForm = (props) => {
                                                 <Input />
                                             </Form.Item>
                                         </div>
-                                        <div className="col col-md-4">
+                                        <div className="col col-12 col-sm-6 col-md-4">
                                             <Form.Item
                                                 name="password"
                                                 label="Password"
@@ -204,7 +204,7 @@ const RegistrationForm = (props) => {
                                             </Form.Item>
                                         </div>
 
-                                        <div className="col col-md-4">
+                                        <div className="col col-12 col-sm-6 col-md-4">
                                             <Form.Item
                                                 name="password_confirmation"
                                                 label="Confirm Password"
@@ -230,7 +230,7 @@ const RegistrationForm = (props) => {
                                             </Form.Item>
                                         </div>
 
-                                        <div className="col col-md-4">
+                                        <div className="col col-12 col-sm-6 col-md-4">
                                             <Form.Item
                                                 label="Phone Number"
                                                 name="phone_number"
@@ -245,7 +245,7 @@ const RegistrationForm = (props) => {
                                             </Form.Item>
                                         </div>
                                         
-                                        <div className="col col-md-4">
+                                        <div className="col col-12 col-sm-6 col-md-4">
                                             <Form.Item 
                                                 name="gender" 
                                                 label="Gender" 
@@ -262,7 +262,7 @@ const RegistrationForm = (props) => {
                                             </Form.Item>
                                         </div>
 
-                                        <div className="col col-md-4">
+                                        <div className="col col-12 col-sm-6 col-md-4">
                                             <Form.Item 
                                                 name="age_group" 
                                                 label="Age Group" 
@@ -300,7 +300,7 @@ const RegistrationForm = (props) => {
                                             />
                                         </div>
                                 
-                                        <div className="col col-md-4">
+                                        <div className="col col-12 col-sm-6 col-md-4">
                                             <TextField
                                                 required
                                                 id="outlined-required"
@@ -311,7 +311,7 @@ const RegistrationForm = (props) => {
                                             />
                                         </div>
                                 
-                                        <div className="col col-md-4">
+                                        <div className="col col-12 col-sm-6 col-md-4">
                                             <TextField
                                                 required
                                                 id="outlined-required"
@@ -322,7 +322,7 @@ const RegistrationForm = (props) => {
                                             />
                                         </div>
                                 
-                                        <div className="col col-md-4">
+                                        <div className="col col-12 col-sm-6 col-md-4">
                                             <TextField
                                                 required
                                                 id="outlined-required"

@@ -1,5 +1,8 @@
+/* ----------------------------------
+   Hero Section - Styles
+ ------------------------------------ */
 
- .hero-slider {
+.hero-slider {
     &:hover {
       .owl-nav {
         opacity: 1;
@@ -61,12 +64,7 @@
         }
       }
     }
-    .nant-single-slide{
-      .slide-contents{
-        position: relative;
-        z-index: 1;
-      }
-    }
+  
     &.hero-style-1 {
       .single-slide {
         position: relative;
@@ -154,7 +152,7 @@
               top: 0;
               width: 100%;
               height: 100%;
-            //   background: url("../../assets/images/sub_title_bg.png") no-repeat;
+              background: url("../../images/sub_title_bg.png") no-repeat;
               z-index: -1;
   
               @media (max-width: 767px) {
@@ -276,10 +274,5 @@
         }
       }
     }
-    &.nant-slider{
-      .single-slide{
-        padding: 280px 0 45px;
-      }
-    }
-  }
+}
   

@@ -19,7 +19,7 @@ export const orderProduct = (props) => {
             if(response?.data?.success) {
                 productInfo = response?.data?.data
                 dispatch(clearAllItemsFromCart());
-                toast.error("Purchased successfully");
+                toast.success("Purchased successfully");
             }
            return dispatch(orderProductAction.orderProduct(productInfo));
         } catch(error) {

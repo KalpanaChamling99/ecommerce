@@ -82,7 +82,7 @@ function MemberList() {
 
   return (
     <>
-      <div className="nant-memberlist-section">
+      <div className="nant-memberlist-section nant-main-section-padding">
         <div className="container">
           <div className="nant-memberlist-search-field">
               <div className="row">

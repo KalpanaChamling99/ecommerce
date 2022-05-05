@@ -6,7 +6,7 @@ const ForgotPassword = () => {
    
     return(
         <>
-            <div className="nant-forgot-password-section nant-section-padding nant-section-bg">
+            <div className="nant-forgot-password-section nant-main-section-padding nant-section-bg">
                 <div className="container">
                     <ForgotPasswordForm />
                 </div>

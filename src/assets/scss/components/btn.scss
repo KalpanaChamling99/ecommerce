@@ -213,3 +213,14 @@
     height: 40px;
     padding: 0 30px;
 }
+.nant-downlaod-btn{
+    padding: 9px 20px;
+    display: inline-block;
+    background-color: #f13114;
+    color: #fff;
+    border-radius: 30px;
+    &:hover{
+        color: #fff;
+        background-color: rgba(248,96,72,0.9);
+    }
+}

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link, withRouter } from "react-router-dom";
 import { isLoggedIn } from "../../../utils";
 
@@ -9,9 +10,9 @@ const NavMenu = () => {
           <Link to="/">Home</Link>
         </li>
         {/* TODO:: update after v1.0.0 */}
-        {/* <li>
-          <Link to="#">Events</Link>
-        </li> */}
+        <li>
+          <Link to="/events/">Events</Link>
+        </li>
         <li>
           {" "}
           <Link to="#">About Us</Link>
@@ -24,6 +25,9 @@ const NavMenu = () => {
             </li>
             <li>
               <Link to="/member-list">Member List</Link>
+            </li>
+            <li>
+              <Link to="/important-document">Important Documents</Link>
             </li>
           </ul>
         </li>

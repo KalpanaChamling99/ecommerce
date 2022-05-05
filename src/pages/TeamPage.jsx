@@ -15,7 +15,7 @@ const TeamPage = (props) => {
   }, [dispatch]);
 
   return (
-    <section className="team-section section-padding">
+    <section className="team-section nant-main-section-padding">
       <div className="container">
         <div className="row">
           {teams?.map((data) => (

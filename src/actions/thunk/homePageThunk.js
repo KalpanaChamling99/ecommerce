@@ -47,6 +47,21 @@ export const getSupporters = () => {
         }
     }
 }
+export const getProjects = () => {
+    console.log("error in projects");
+    return async(dispatch) => {
+        try {
+           const response = await homePageApi.getProjects();
+           let projects =[];
+           if(response?.data?.success) {
+                projects = response?.data?.data
+            }
+           return dispatch(homePageAction.getProjects(projects));
+        } catch(error) {
+            console.error("Error in Projects: " + error);
+        }
+    }
+}
 export const getSliders = () => {
     return async(dispatch) => {
         try {
@@ -66,17 +81,20 @@ export const getSliders = () => {
         }
     }
 }
-export const getEvents = () => {
+export const getEvents = (params='') => {
     return async(dispatch) => {
         try {
-           const response = await homePageApi.getEvents();
-           let events =[];
+            dispatch(showLoader());
+           const response = await homePageApi.getEvents(params);
+           let events = {};
            if(response?.data?.success) {
-                events = response?.data?.data
+                events = { data: response?.data?.data, total: response?.data?.total_records };
             }
            return dispatch(homePageAction.getEvents(events));
         } catch(error) {
             console.error("Error in events: " + error);
+        }finally {
+            dispatch(closeLoader());
         }
     }
 }

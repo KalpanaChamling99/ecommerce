@@ -1,0 +1,20 @@
+.faq-section{
+    background-color: #f0f0f0;
+    h2{
+        margin: 0;
+    }
+    .ant-collapse{
+        border: 0;
+        background-color: transparent;
+        >.ant-collapse-item{
+            border: 0;
+        }
+    }
+    .nant-accordion-card{
+        margin-top: 30px;
+        background-color: #fff;
+    }
+    .ant-collapse-content-inactive{
+        border: 0;
+    }
+}

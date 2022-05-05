@@ -113,3 +113,25 @@
     }
   }
 }
+.nant-service-section{
+    .nant-service-item{
+      padding-top: 60px;
+      &:nth-child(even){
+        .nant-image-section,
+        .nant-desc{
+          padding-top: 30px;
+        }
+        .nant-image-section{
+            order: 2;
+        }
+        .nant-desc{
+          order: 1;
+        }
+      }
+      .nant-btn-section{
+        a{
+          margin-right: 15px;
+        }
+      }
+    }
+}

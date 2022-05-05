@@ -1,6 +1,5 @@
 import React, {useState } from "react";
 import { Link, withRouter } from "react-router-dom";
-import {FaBars} from 'react-icons/fa';
 import { isLoggedIn } from "../../../utils";
 
 const MobileMenu = () => {
@@ -18,7 +17,7 @@ const MobileMenu = () => {
         <>
          <div className="mobile-nav-wrap">
               <div id="hamburger" onClick={showMobileMenuHandler}>
-                  <FaBars />
+                  <i class="fal fa-bars"></i>
               </div>
               {/* <mobile menu - responsive menu  */}
               <div className={mobileMenuClass}>
@@ -47,6 +46,9 @@ const MobileMenu = () => {
                             </li>
                             <li>
                                 <Link to="/member-list" onClick={closeMobileMenuHandler}>Member List</Link>
+                            </li>
+                            <li>
+                                <Link to="/important-document" onClick={closeMobileMenuHandler}>Important Documents</Link>
                             </li>
                         </ul>
                     </li>

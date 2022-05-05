@@ -1,16 +1,18 @@
 export const initialState = {
     siteSettings: {},
-    service: {},
+    services: [],
     supporters: [],
     sliders: [],
-    events: [],
-    publicProducts: [] 
+    events: {},
+    publicProducts: [],
+    projects: [] 
   };
   
   export const ACTIONS_TYPES = Object.freeze({
     GET_SITE_SETTINGS: "GET_SITE_SETTINGS",
     GET_SERVICE: "GET_SERVICE",
     GET_SUPPORTERS: "GET_SUPPORTERS",
+    GET_PROJECTS: "GET_PROJECTS",
     GET_SLIDERS: "GET_SLIDERS",
     GET_EVENTS: "GET_EVENTS",
     GET_PUBLIC_PRODUCTS: "GET_PUBLIC_PRODUCTS"
@@ -33,6 +35,11 @@ export const initialState = {
           ...state,
           supporters: action.payload,
         };
+        case ACTIONS_TYPES.GET_PROJECTS:
+        return {
+          ...state,
+          projects: action.payload,
+        };
         case ACTIONS_TYPES.GET_SLIDERS:
         return {
           ...state,
@@ -41,7 +48,7 @@ export const initialState = {
         case ACTIONS_TYPES.GET_EVENTS:
         return {
           ...state,
-          events: action.payload,
+          events: { data: action.payload?.data, total: action.payload?.total },
         };
         case ACTIONS_TYPES.GET_PUBLIC_PRODUCTS:
         return {

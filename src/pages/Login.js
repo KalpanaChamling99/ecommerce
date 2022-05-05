@@ -5,7 +5,6 @@ import { Form, Input, Button } from "antd";
 
 import { loginSuccess } from "../actions/thunk/loginThunk";
 import Loader from '../components/common/Loader';
-import "../assets/scss/pages/login.scss";
 
 const Login = () => {
   const history = useHistory();
@@ -25,7 +24,7 @@ const Login = () => {
     dispatch(loginSuccess({ email: values.email, password: values.password }));
   };
   return (
-    <div className="login-section section-padding">
+    <div className="login-section nant-main-section-padding">
       <div className="container">
         <div className="login-wrapper">
           <h3 className="section-title">Login</h3>

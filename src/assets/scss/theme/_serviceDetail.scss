@@ -1,3 +1,6 @@
+/* ----------------------------------
+	About Us Section Styles
+ ------------------------------------ */
  .about-us-section {
 	.about-shots {
 		position: relative;
@@ -134,7 +137,7 @@
 			bottom: -20px;                  
 			width: 141px;
 			height: 98px;
-			// background: url('../../assets/images/99.png') no-repeat;
+			// background: url('../img/99.png') no-repeat;
 			z-index: -1;
 		}
 
@@ -225,12 +228,7 @@
 	.section-title {
 		span {
 			color: #d55342;
-            
 		}
-        .icon{
-            display: inline-block;
-            margin-right: 10px;
-        }
 		h1 {
 			span {
 				color: rgb(0, 186, 163);

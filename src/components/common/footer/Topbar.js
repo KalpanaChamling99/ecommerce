@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { Link,withRouter } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {FaEnvelope,FaPhone,FaFacebookF,FaTwitter,FaInstagram,FaYoutube} from 'react-icons/fa';
 import { getSiteSettings} from '../../../actions/thunk/homePageThunk';
+
+import Social from '../Social';
+import Logo from '../Logo';
 
 
 const Topbar = () => {
@@ -13,14 +15,15 @@ const Topbar = () => {
     useEffect(() => {
         dispatch(getSiteSettings());
     }, [dispatch]);
+
     return(
         <div className="footer-top-bar text-white">
             <div className="container">
                 <div className="row align-items-center">
                     <div className="col-lg-3">
                         <div className="footer-logo"> 
-                            <Link to="#">
-                                <img src={siteSettings['logo']} alt={siteSettings['name']}/>
+                            <Link to="/">
+                                <Logo />
                             </Link>
                         </div>
                     </div>
@@ -28,7 +31,7 @@ const Topbar = () => {
                         <div className="contact-us">
                             <div className="single-info clearfix">
                                 <div className="icon"> 
-                                  <FaEnvelope />
+                                  <i className="fal fa-envelope"></i>
                                 </div>
                                 <div className="contact-info">
                                     <h4>Email Address</h4>
@@ -37,7 +40,7 @@ const Topbar = () => {
                             </div>
                             <div className="single-info clearfix">
                                 <div className="icon"> 
-                                    <FaPhone />
+                                   <i className="fal fa-phone"></i>
                                 </div>
                                 <div className="contact-info">
                                     <h4>Phone Number</h4>
@@ -47,12 +50,7 @@ const Topbar = () => {
                         </div>
                     </div>
                     <div className="col-lg-3">
-                        <div className="social-link text-lg-right"> 
-                            <Link to={{pathname: siteSettings['facebook']}} target="_blank" rel="noopener noreferrer"><FaFacebookF /></Link> 
-                            <Link to={{pathname:siteSettings['twitter']}} target="_blank" rel="noopener noreferrer"><FaTwitter /></Link> 
-                            <Link to={{pathname:siteSettings['instagram']}} target="_blank" rel="noopener noreferrer"><FaInstagram /></Link> 
-                            <Link to="#"><FaYoutube /></Link>
-                        </div>
+                        <Social classes=" text-lg-right" />
                     </div>
                 </div>
             </div>

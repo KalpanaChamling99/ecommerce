@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { withRouter,Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {getPublicProducts} from '../../actions/thunk/homePageThunk';
-import {FaHeart} from 'react-icons/fa';
 import Product from './../products/Product';
+import Title from '../common/Title';
 
 const ProductList = () => {
     const { homePage: { publicProducts} } = useSelector((state) => state);
@@ -18,15 +18,16 @@ const ProductList = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-12 text-center mb-40">
-                        <div className="section-title">
-                            <span><span className="icon"><FaHeart /></span>Product</span>
-                            <h1>Latest Products</h1>
-                        </div>
+                        <Title 
+                            title="Products"
+                            subTitle="Fundraiser Products"
+                            titleClass ="nant-title-green"
+                        />
                     </div>
                 </div>
                 <div className="row">
                         {publicProducts?.map( (items) => (
-                        <div className="col-xl-4 col-md-6 col-12">
+                        <div className="col-xl-4 col-md-6 col-12" key={items.id}>
                             <Product 
                                 item_name={items.item_name}
                                 description = {items.description}
